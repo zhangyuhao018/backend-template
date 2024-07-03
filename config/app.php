@@ -61,6 +61,26 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | FRONTEND URL
+    |--------------------------------------------------------------------------
+    | フロントエンドのURL
+    |
+    */
+    'frontend_url' => env('FRONTEND_URL', 'http://localhost'),
+
+    /*
+      |--------------------------------------------------------------------------
+      | S3 URL Expiration Minutes
+      |--------------------------------------------------------------------------
+      |
+      */
+    's3_expiration' => env('SANCTUM_TOKEN_LIFETIME_MINUTES', 4320),
+
+    //pin_code 送信有効期限
+    'pincode_lifetime' => env('PINCODE_LIFETIME_MINUTES', 30),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
@@ -70,7 +90,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +103,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +116,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +129,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +188,14 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // カスタマイズ
+        // Laravel IDE helper
+        // 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        App\Providers\RepositoryServiceProvider::class,
+        App\Providers\UtilServiceProvider::class,
+        // App\Providers\LaravelQueueRocketMQServiceProvider::class,
+        // カスタマイズ
     ])->toArray(),
 
     /*
@@ -183,6 +211,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        // カスタマイズ
+        'LogService'          => App\Facades\LogServiceFacade::class,
+        // カスタマイズ
     ])->toArray(),
 
 ];
