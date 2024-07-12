@@ -3,13 +3,13 @@
 namespace App\Repositories\Impl;
 
 use App\Repositories\Base\BaseRepository;
-use App\Repositories\Base\UserRepositoryInterface;
+use App\Repositories\Base\UsersRepositoryInterface;
 use App\Utils\CommonConsts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
 
-class UserRepository extends BaseRepository implements UserRepositoryInterface
+class UsersRepository extends BaseRepository implements UsersRepositoryInterface
 {
     /**
      * user login

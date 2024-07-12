@@ -3,7 +3,7 @@
 namespace App\Repositories\Base;
 
 
-interface UserRepositoryInterface
+interface UsersRepositoryInterface
 {
     public function login($data);
 }

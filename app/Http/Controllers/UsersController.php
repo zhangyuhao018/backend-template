@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Utils\CommonConsts;
-use App\Repositories\Base\UserRepositoryInterface;
+use App\Repositories\Base\UsersRepositoryInterface;
 use Illuminate\Http\Response;
 use App\Http\Resources\LoginResource;
 
 
-class UserController extends Controller
+class UsersController extends Controller
 {
-    private $userRepository;
+    private $usersRepository;
 
     public function __construct(
-        UserRepositoryInterface $userRepository
+        UsersRepositoryInterface $usersRepository
     ) {
-        $this->userRepository = $userRepository;
+        $this->usersRepository = $usersRepository;
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
             ]
         );
 
-        $ret = $this->userRepository->login($data);
+        $ret = $this->usersRepository->login($data);
 
         if (isset($ret["error"])) {
             /**
