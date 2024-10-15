@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('top');
-});
+})->name('top');
 Route::get('/checkout', function (Request $request) {
     $stripePriceId = 'price_1Q8fRsIBJvEHWL29H9X2Y95E';
 
@@ -34,3 +34,16 @@ Route::get('/checkout', function (Request $request) {
 
 Route::view('checkout/success', 'checkout-success')->name('checkout-success');
 Route::view('checkout/cancel', 'checkout-cancel')->name('checkout-cancel');
+
+Route::get('/subscription-checkout', function (Request $request) {
+    $user = User::find(1);
+    $price_basic_monthly = 'price_1QA2CtIBJvEHWL295g2nqcZW';
+
+    return $user->newSubscription('default', $price_basic_monthly)
+        ->trialDays(5)
+        ->allowPromotionCodes()
+        ->checkout([
+            'success_url' => route('checkout-success'),
+            'cancel_url' => route('checkout-cancel'),
+        ]);
+});

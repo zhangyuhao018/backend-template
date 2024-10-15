@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //login
 Route::post('/login', [UsersController::class, 'login'])->name('login');
+
+//认证
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::group(['prefix' => '/subscription/'], function () {
+        Route::get('show-subscription', [StripeController::class, 'showSubscription']);
+        Route::post('create-checkout-session', [StripeController::class, 'createSubscription']);
+        Route::get('billing-portal', [StripeController::class, 'billingPortal']);
+    });
+});
 
