@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
-
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,5 +39,7 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
+
+        Cashier::calculateTaxes();
     }
 }

@@ -1,0 +1,29 @@
+/* public/css/app.css */
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #3490dc;
+    border-radius: 5px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+}
